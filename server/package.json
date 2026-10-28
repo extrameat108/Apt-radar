@@ -1,0 +1,41 @@
+{
+  "name": "apt-radar-server",
+  "version": "0.1.0",
+  "description": "실거래 레이더 서버: 국토부 실거래가 수집, 신고가 판정, 푸시 알림",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "backfill": "tsx src/cli/backfill.ts",
+    "ingest": "tsx src/cli/ingest-once.ts",
+    "seed:demo": "tsx src/cli/seed-demo.ts",
+    "dev:demo": "DB_PATH=./data/demo.db SCHEDULER=0 tsx watch src/index.ts"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^11.3.1",
+    "@fastify/rate-limit": "^11.2.1",
+    "better-sqlite3": "^13.0.3",
+    "expo-server-sdk": "^8.0.0",
+    "fast-xml-parser": "^5.11.2",
+    "fastify": "^5.12.7",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  }
+}
