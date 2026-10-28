@@ -13,6 +13,5 @@ ENV NODE_ENV=production DB_PATH=/data/apt-radar.db PORT=8080
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json ./
-VOLUME ["/data"]
 EXPOSE 8080
 CMD ["node", "dist/index.js"]
