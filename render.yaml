@@ -1,0 +1,18 @@
+# Render Blueprint: Render 대시보드에서 New → Blueprint → 이 저장소 선택
+# 인증키(MOLIT_SERVICE_KEY)는 배포 후 서비스의 Environment 탭에서 추가하세요.
+services:
+  - type: web
+    runtime: docker
+    name: apt-radar-server
+    rootDir: server
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
+    region: singapore
+    healthCheckPath: /health
+    envVars:
+      - key: DB_PATH
+        value: /data/apt-radar.db
+    disk:
+      name: apt-radar-data
+      mountPath: /data
+      sizeGB: 1
